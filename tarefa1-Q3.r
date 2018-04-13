@@ -56,10 +56,10 @@ for(i in 1:20) {
   points2[i,] <- c(precision(distsDesc2[1:i], IDrel), recall(distsDesc2[1:i], IDrel))
 }
 
-points1df <- data.frame(points1[,1], points1[,2])
-g1 <- ggplot(points1df, aes(x=points1df[2])) + geom_line(aes(y=points1df[1])) + geom_point(aes(y=points1df[1]))
-g1
+points1df <- data.frame(Descritor="Descritor1",  Precisao=points1[,1], Revocacao=points1[,2])
+points2df <- data.frame(Descritor="Descritor2", Precisao=points2[,1], Revocacao=points2[,2])
 
-points2df <- data.frame(points2[,1], points2[,2])
-g2 <- ggplot(points2df, aes(x=points2df[2])) + geom_line(aes(y=points2df[1])) + geom_point(aes(y=points2df[1]))
-g2
+pointsDf <- rbind(points1df, points2df)
+
+g1 <- ggplot(pointsDf, aes(x=Revocacao, group = Descritor, colour = Descritor)) + geom_line(aes(y=Precisao)) + geom_point(aes(y=Precisao))
+g1

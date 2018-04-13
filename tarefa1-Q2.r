@@ -73,4 +73,4 @@ similaridade <- function (doc, query) {
 
 similaridades <- apply(representacoes, 2, similaridade, queryRep)
 
-IDdocs[order(similaridades, decreasing = TRUE)[1]]
+IDdocs[order(similaridades, decreasing = TRUE)]
